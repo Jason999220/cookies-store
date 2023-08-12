@@ -1,5 +1,5 @@
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPen } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
@@ -112,11 +112,11 @@ export default function Profile() {
             defaultValue={userObj.email}
             onChange={handleUpdateEmail}
           ></ProfileInfoInput>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faPen}
             size="lg"
             onClick={handleUpdateEmailBtn}
-          />
+          /> */}
         </ProfileInfo>
         <ProfileInfo>
           <ProfileInfoTitle>UserName : </ProfileInfoTitle>
@@ -124,11 +124,11 @@ export default function Profile() {
             defaultValue={userObj.username}
             onChange={handleUpdateUserName}
           ></ProfileInfoInput>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faPen}
             size="lg"
             onClick={handleUpdateUserNameBtn}
-          />
+          /> */}
         </ProfileInfo>
         <ProfileInfo>
           <ProfileInfoTitle>Password : </ProfileInfoTitle>
@@ -136,11 +136,11 @@ export default function Profile() {
             onChange={handleUpdatePassword}
             defaultValue={"*****"}
           ></ProfileInfoInput>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faPen}
             size="lg"
             onClick={handleUpdatePasswordBtn}
-          />
+          /> */}
         </ProfileInfo>
       </ProfileDiv>
     </>
