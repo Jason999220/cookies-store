@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box; /* 使padding、border、margin不影響主體物件大小 */
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", "Apple LiGothic Medium", "Herr Von Muellerhoff",
+    "Microsoft JhengHei", sans-serif; /* 字形樣式 */
+  list-style: none; /* 移除列表的符號 */
+  text-decoration: none; /* 移除超連結的下底線 */
+  border: none; /* 移除初始border */
+  font-weight: 700;
 }
 
-.App-logo {
-  height: 40vmin;
+h2 {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.inputBox {
+  position: relative;
+  width: 300px;
+  margin-top: 20px;
+}
+
+input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  color: #23242a;
+  letter-spacing: 0.05rem;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 20px 0px 10px;
+  pointer-events: none; /* */
+  color: #8f8f8f;
+  letter-spacing: 0.05rem;
+  transition: 0.5s;
+}
+
+/* 假如被點擊或者有資料則觸發 */
+input:valid ~ span,
+input:focus ~ span {
+  color: #fff;
+  font-size: 0.75rem;
+  transform: translateY(-34px);
+}
+
+i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: 0.5s;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input:valid ~ i,
+input:focus ~ i {
+  height: 44px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.links {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 15px;
+  width: 300px;
+}
+.forgot {
+  color: #777;
+  text-decoration: none;
+}
+.forgot:hover {
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.or {
+  position: absolute;
+  top: 63%;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+}
+.or::after {
+  content: "OR";
+  color: #fff;
+  position: absolute;
+  left: 43%;
+  transform: translate(0%, -50%);
+  padding: 0px 5px;
+  font-size: 1.5rem;
+  background: #222;
+}
+.other-box {
+  width: 400px;
+  padding: 0.5rem;
+  display: flex;
+  padding-left: 0.7rem;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.facebook {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(0, 0, 255, 0.6);
+  color: #777;
+}
+.google {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(255, 0, 0, 0.6);
+}
+.facebook:hover {
+  background: rgba(0, 0, 255, 1);
+}
+.google:hover {
+  background: rgba(255, 0, 0, 1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.shop-footer {
+  border: 1px solid #777;
+  display: flex;
+  justify-content: space-evenly;
 }
