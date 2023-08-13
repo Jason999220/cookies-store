@@ -8,12 +8,12 @@ export default function Shop() {
   const [currentOrder, setCurrentOrder] = useState([]);
   const [currentBuyPrice, setCurrentBuyPrice] = useState(0);
   useEffect(() => {
-    // 畫面一掛載時從資料庫取得相對應資料
+    //* 畫面一掛載時從資料庫取得相對應資料
     ShopService.getBuyProduct(
       JSON.parse(localStorage.getItem("userInfo"))["userObj"]["_id"]
     )
       .then((result) => {
-        // console.log(result);
+        //* console.log(result);
         setCurrentOrder(result["data"]["currentOrder"]);
       })
       .catch((err) => {
@@ -22,14 +22,14 @@ export default function Shop() {
   }, []);
 
   const handleCheckPay = (e) => {
-    // 假如被打勾就增加金額
+    //* 假如被打勾就增加金額
     if (e.target.checked) {
       setCurrentBuyPrice(
         (preState) =>
           preState + e.target["dataset"]["price"] * e.target["dataset"]["qty"]
       );
     } else {
-      // 假如打勾取消就減少金額
+      //* 假如打勾取消就減少金額
       setCurrentBuyPrice(
         (preState) =>
           preState - e.target["dataset"]["price"] * e.target["dataset"]["qty"]
@@ -37,7 +37,7 @@ export default function Shop() {
     }
   };
 
-  // ECPay
+  //* ECPay
   const handleECPay = () => {
     console.log("hit ECPay");
 

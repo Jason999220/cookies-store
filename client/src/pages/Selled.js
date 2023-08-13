@@ -7,7 +7,7 @@ function Selled() {
   const [status, setStatus] = useState("");
   const { userObj } = JSON.parse(localStorage.getItem("userInfo"));
 
-  // 利用useEffect在畫面掛載時取得資料
+  //* 利用useEffect在畫面掛載時取得資料
   useEffect(() => {
     ProductService.getSelledProduct(userObj.email)
       .then((result) => {
@@ -20,7 +20,7 @@ function Selled() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [userObj.email]);
   return (
     <>
       {/* 假如沒有上架的話會顯示提示語 */}

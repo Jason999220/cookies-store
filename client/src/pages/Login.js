@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../services/auth";
 
-// styled components
+//* styled components
 const LoginComponent = styled.div`
   width: 100%;
   height: 75vh;
@@ -66,7 +66,7 @@ const LoginBtn = styled.button`
 export default function Login() {
   const navigate = useNavigate();
 
-  // useContext
+  //* useContext
   const {
     email,
     userName,
@@ -80,7 +80,7 @@ export default function Login() {
     setErrorMessage,
   } = useContext(MyGlobalData);
 
-  // handle functions
+  //* handle functions
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -97,7 +97,7 @@ export default function Login() {
         console.log("完成 Client handleRegister");
         console.log(result.data);
         setIsRegister(false);
-        // 轉址
+        //* 轉址
         navigate("/Login");
       })
       .catch((err) => {
@@ -110,19 +110,19 @@ export default function Login() {
       .then((result) => {
         console.log(result);
         if (result.data.userObj === null) {
-          // 若登入失敗取得錯誤訊息
+          //* 若登入失敗取得錯誤訊息
           setErrorMessage(result.data.message);
         } else {
-          // 若登入成功清空錯誤訊息
+          //* 若登入成功清空錯誤訊息
           setErrorMessage(null);
-          // 儲存至 session
+          //* 儲存至 session
           localStorage.setItem("userInfo", JSON.stringify(result.data));
-          // 轉址
+          //* 轉址
           navigate("/store");
         }
       })
       .catch((err) => {
-        // 若登入失敗取得錯誤訊息
+        //* 若登入失敗取得錯誤訊息
         err.response.data
           ? setErrorMessage(err.response.data)
           : setErrorMessage(err.message);

@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { MyGlobalData } from "../App";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // icon
-// import { faCartShopping } from "@fortawesome/free-solid-svg-icons"; // icon
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; //* icon
+// import { faCartShopping } from "@fortawesome/free-solid-svg-icons"; //* icon
 import AuthService from "../services/auth";
 
 export default function Nav() {
-  // useContext
+  //* useContext
   const { setIsRegister } = useContext(MyGlobalData);
   const handleLogout = () => {
-    // 進到AuthService處理logout
+    //* 進到AuthService處理logout
     AuthService.logout();
-    // 設為login page 並跳轉
+    //* 設為login page 並跳轉
     setIsRegister(false);
   };
   return (

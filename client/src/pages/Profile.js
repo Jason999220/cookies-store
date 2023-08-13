@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { MyGlobalData } from "../App";
-import EcpayService from "../services/ecpay";
+// import EcpayService from "../services/ecpay";
 
 const ProfileDiv = styled.div`
   width: 60%;
@@ -51,7 +51,7 @@ export default function Profile() {
   //   console.log(result);
   // });
   const navigate = useNavigate();
-  // get useContext data
+  //* get useContext data
   const {
     setUpdateEmail,
     setUpdateUserName,

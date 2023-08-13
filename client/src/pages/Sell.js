@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { MyGlobalData } from "../App";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import ProductService from "../services/produce";
 import axiosClient from "../services/s3";
@@ -14,10 +14,10 @@ export default function Sell() {
   const [itemCategories, setItemCategories] = useState("");
   const [itemThumbnail, setitemThumbnail] = useState({});
   const { userObj } = JSON.parse(localStorage.getItem("userInfo"));
-  // useContext
-  const { errorMessage, setErrorMessage } = useContext(MyGlobalData);
+  //* useContext
+  const { setErrorMessage } = useContext(MyGlobalData);
 
-  // 將資料存進資料庫和AWS S3
+  //* 將資料存進資料庫和AWS S3
   const handleSell = async () => {
     const method = "post";
     const url = "/images";
@@ -26,7 +26,7 @@ export default function Sell() {
       form.append("image", itemThumbnail[i]);
     }
 
-    // get the thumbnail url from s3
+    //* get the thumbnail url from s3
     const imageUrl = await axiosClient({
       url,
       method,
@@ -36,14 +36,14 @@ export default function Sell() {
       },
     })
       .then((presignedUrls) => {
-        // console.log(presignedUrls);
+        //* console.log(presignedUrls);
         return presignedUrls;
       })
       .catch((err) => {
         console.error(err);
       });
 
-    //* create a new product
+    //** create a new product
     ProductService.addProduct(
       userObj.email,
       itemName,
@@ -54,12 +54,12 @@ export default function Sell() {
       imageUrl
     )
       .then(() => {
-        // 轉址
+        //* 轉址
         navigate("/profile");
       })
       .catch((err) => {
         console.log(err.response.data);
-        // 若登入失敗取得錯誤訊息
+        //* 若登入失敗取得錯誤訊息
         setErrorMessage(err.response.data);
       });
   };

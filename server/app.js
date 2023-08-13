@@ -10,16 +10,9 @@ const AuthRoute = require("./routes/auth"); // get the user routes
 const ProductRoute = require("./routes/product"); // get the user routes
 const BuyRoute = require("./routes/buy");
 const ECPayRoute = require("./routes/ECPay");
-const Product = require("./modules/product");
-
-// const ProductRoute = require("./routes/product");
 
 //* AWS S3
-const {
-  getUserPresignedUrls,
-  uploadToS3,
-  getSingleImageUrl,
-} = require("./s3.js");
+const { uploadToS3, getSingleImageUrl } = require("./s3.js");
 const multer = require("multer");
 const { memoryStorage } = require("multer");
 const storage = memoryStorage();
@@ -81,7 +74,6 @@ app.post("/images", upload.array("image"), async (req, res) => {
   //* get image from s3
   const { error, presignedUrls } = await getSingleImageUrl(s3Key); //* 若成功得到所有圖片網址
   if (error) return res.status(400).json({ message: error.message });
-  // console.log("get image presignedUrls");
   // console.log(presignedUrls); //* get image url from s3
   return res.json(presignedUrls);
 });

@@ -5,24 +5,24 @@ import styled from "styled-components";
 import ProductService from "../services/produce";
 import ShopService from "../services/shop";
 
-// styled component
+//* styled component
 const ImgThumbnail = styled.img`
   height: 300px;
   object-fit: cover;
 `;
 
 export default function Categories() {
-  // useContext
+  //* useContext
   const { categoriesData, setCategoriesData } = useContext(MyGlobalData);
   const [newData, setNewData] = useState([]);
-  // 要改成利用網址動態取得進入的網站
+  //* 要改成利用網址動態取得進入的網站
   // const currentPathname = window.location.pathname;
   // let categoriesData = currentPathname.split("/");
   // categoriesData = categoriesData[3];
   useEffect(() => {
     ProductService.getCategoriesProduct(categoriesData)
       .then((result) => {
-        // console.log(result.data.productObj); // [{}]
+        // console.log(result.data.productObj); //* [{}]
         setNewData(result.data.productObj);
       })
       .catch((err) => {
@@ -30,7 +30,7 @@ export default function Categories() {
       });
   }, [categoriesData]);
 
-  // 將該產品ID與購買者ID傳入，建立資料表
+  //* 將該產品ID與購買者ID傳入，建立資料表
   const handleBuy = (item_id) => {
     ShopService.buyProduct(
       JSON.parse(localStorage.getItem("userInfo"))["userObj"]["_id"],
